@@ -1,0 +1,22 @@
+Given the root of a binary tree, invert the tree, and return its root.
+
+**************** Solution ****************
+
+void insertReverse(TreeNode* node){
+        if(node==nullptr)
+        {
+            return;
+        }
+        else{
+            TreeNode* temp=nullptr;
+            insertReverse(node->left);
+            insertReverse(node->right);
+            temp=node->left;
+            node->left=node->right;
+            node->right=temp;
+        }
+    }
+    TreeNode* invertTree(TreeNode* root) {
+        insertReverse(root);
+        return root;
+    }
