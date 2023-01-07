@@ -1,0 +1,31 @@
+ Shuffle the Array
+
+Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+
+Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
+****************** Solution *******************
+
+
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        vector<int>shuffle;
+        int i=0,j=n;
+        for(int k=0; k<nums.size(); k++)
+        {
+             if(k%2==0)
+             {
+                 shuffle.push_back(nums[i]);
+                 i++;
+             }
+             else
+             {
+                 shuffle.push_back(nums[j]);
+                 j++;
+             }
+        }
+
+        return shuffle;
+    }
+};
