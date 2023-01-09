@@ -1,0 +1,36 @@
+            Sort Array By Parity
+Given an integer array nums, move all the even integers at the beginning of the array followed by all the odd integers.
+
+Return any array that satisfies this condition.
+
+
+
+***************** Solution ********************
+
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        if(nums.empty() || nums.size() == 1)
+            return nums;
+
+        vector<int>out,count;
+
+        for(int i=0;i<nums.size(); i++)
+        {
+            if(nums[i]%2 == 0)
+            {
+                out.push_back(nums[i]);
+            }
+            else
+            {
+                count.push_back(i);
+            }
+        }
+        for(int i=0 ; i<count.size() ; i++)
+        {
+            out.push_back(nums[count[i]]);
+        }
+
+        return out;
+    }
+};
