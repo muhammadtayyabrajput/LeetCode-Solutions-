@@ -1,0 +1,56 @@
+          Sort Array By Parity II
+Given an array of integers nums, half of the integers in nums are odd, and the other half are even.
+
+Sort the array so that whenever nums[i] is odd, i is odd, and whenever nums[i] is even, i is even.
+
+Return any answer array that satisfies this condition.
+
+
+******************* Solution ************************
+
+class Solution {
+public:
+    vector<int> sortArrayByParityII(vector<int>& nums) {
+        if(nums.empty() || nums.size() == 1)
+            return nums;
+
+        vector<int>out,count;
+
+        for(int i=0;i<nums.size(); i++)
+        {
+            if(nums[i]%2 == 0)
+            {
+                out.push_back(nums[i]);
+            }
+            else
+            {
+                count.push_back(i);
+            }
+        }
+        for(int i=0 ; i<count.size() ; i++)
+        {
+            out.push_back(nums[count[i]]);
+        }
+
+        count.clear();
+        int k=0,j=out.size()/2;
+        for(int i=0; i<out.size() ; i++)
+        {
+            if(i%2 == 0)
+            {
+                count.push_back(out[k]);
+                k++;
+            }
+            else
+            {
+                count.push_back(out[j]);
+                j++;
+            }
+        }
+
+        out.clear();
+        out=count;
+        count.clear();
+        return out;
+    }
+};
